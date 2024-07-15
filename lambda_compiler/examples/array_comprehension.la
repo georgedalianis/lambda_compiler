@@ -1,0 +1,15 @@
+-- A piece of Theta code for demonstration purposes
+
+const N = 100: integer;
+
+a[100]: integer;
+
+def main(): 
+
+  for i in [0:N]:
+    a[i] = i;
+  endfor;
+
+  half := [ x / 2 for x: integer in a of 100] : scalar;
+  
+enddef;

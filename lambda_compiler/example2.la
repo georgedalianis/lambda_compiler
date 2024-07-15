@@ -1,0 +1,22 @@
+def factorial(n:integer) -> integer:
+    result: integer;
+    result = 1;
+    for i in [1:n+1]:
+        result = result * i;
+    endfor;
+    return result;
+enddef;
+
+def main():
+    n: integer;
+    result: integer;
+
+    n = 10;  -- Change this value to calculate the factorial of a different number
+    result = factorial(n);
+
+    writeStr("Factorial of ");
+    writeInteger(n);
+    writeStr(" is ");
+    writeInteger(result);
+    writeStr("\n");
+enddef;
