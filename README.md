@@ -1,51 +1,69 @@
-# Lambda-to-C Transpiler
+# Θεωρία Υπολογισμού – ΠΛΗ402
 
-This project implements a source-to-source compiler (transpiler) that translates programs written in the fictional programming language **Lambda** into equivalent C99 code. It was developed as part of the course **Theory of Computation (PLH 402)** at the Technical University of Crete.
+Αυτό το repository περιέχει την υλοποίηση ενός source-to-source μεταγλωττιστή που μεταφράζει προγράμματα της φανταστικής γλώσσας **Lambda** σε ισοδύναμο κώδικα σε **C (C99)**. Η εργασία αναπτύχθηκε στο πλαίσιο του μαθήματος **ΠΛΗ402 – Θεωρία Υπολογισμού** της Σχολής ΗΜΜΥ, Πολυτεχνείο Κρήτης.
 
-## Overview
+---
 
-The Lambda language includes features such as:
-- Basic and compound types (`integer`, `scalar`, `str`, `bool`, `comp`)
-- Control structures (`if`, `while`, `for`)
-- User-defined functions and methods
-- Array comprehensions
-- Comments, macros, and string literals
+## Περιγραφή
 
-The transpiler performs lexical and syntax analysis using **Flex** and **Bison**, then generates equivalent C code.
+Ο μεταγλωττιστής υποστηρίζει:
+- Ανάλυση προγραμμάτων `.la` σε λεκτικό και συντακτικό επίπεδο
+- Παραγωγή ισοδύναμου C κώδικα
+- Χρήση εργαλείων `flex`, `bison` και `gcc`
+- Υποστήριξη predefined συναρτήσεων μέσω του `lambdalib.h`
 
-## How to Use
+---
 
-### Step 1: Convert `.la` to `.c`
+## Οδηγίες Εκτέλεσης
 
-From the root directory of the project, run the following command:
+### **A) Μετατροπή `.la` σε `.c`**
+
+Από το αρχικό directory του project, εκτελέστε:
 
 ```bash
 ./compile.sh examples/useless.la
-If there are no syntax errors, a new file useless.c will be generated.
+```
 
-The compile.sh script automatically rebuilds the mycompiler binary before each run.
+Εάν δεν υπάρχουν συντακτικά λάθη, θα παραχθεί το αρχείο:
 
-Step 2: Compile .c to executable
-Navigate to the examples/ directory and compile the C file:
+```
+examples/useless.c
+```
 
+> Το script `compile.sh` αναδημιουργεί πρώτα τον `mycompiler` (με χρήση flex/bison) πριν μεταγλωττίσει το `.la` αρχείο.
+
+---
+
+### **B) Μεταγλώττιση και Εκτέλεση του `.c` αρχείου**
+
+Μεταβείτε στον φάκελο `examples` και εκτελέστε:
+
+```bash
 gcc -o useless useless.c
 ./useless
-Examples
-You can find example Lambda programs inside the examples/ folder:
+```
 
-useless.la
+Θα παραχθεί ένα εκτελέσιμο πρόγραμμα που μπορείτε να εκτελέσετε από την κονσόλα.
 
-example1.la
+---
 
-example2.la
+### **Γ) Διαθέσιμα Παραδείγματα**
 
-These files serve as test cases to verify both the lexical and syntax correctness of the compiler.
-Requirements
-To run and build the project, you will need:
+Μέσα στο φάκελο `examples/` θα βρείτε παραδείγματα προγραμμάτων:
 
-A Linux environment (or WSL on Windows)
+- `useless.la`
+- `example1.la`
+- `example2.la`
 
-flex
-bison
-gcc
-make 
+Μπορούν να χρησιμοποιηθούν για δοκιμή της λειτουργικότητας του μεταγλωττιστή.
+
+---
+
+## Απαιτούμενα Εργαλεία
+
+Για να τρέξετε το project τοπικά, θα χρειαστείτε:
+
+- `flex`
+- `bison`
+- `gcc`
+- Linux ή WSL (Windows Subsystem for Linux)
